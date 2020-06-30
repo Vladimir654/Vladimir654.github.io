@@ -20,17 +20,17 @@
         // Register an event handler to receive messages;
         windowProxy.addEventListener(function(event) {
             if(typeof event.data.checkEvent === "undefined") {
-                if(getParameterByName('id') === '1') {
-                    document.getElementById('kurmokaev').checked = localStorage.getItem('kek') !== null ? true : false;
+                if(getParameterByName('id')) {
+                    document.getElementById('kurmokaev').checked = localStorage.getItem('kek' + getParameterByName('id')) !== null ? true : false;
                 }
             }
         });
         $('#kurmokaev').on('click' , () => {
             if(document.getElementById('kurmokaev').checked == true) {
-                localStorage.setItem('kek', 'true');
+                localStorage.setItem('kek' + getParameterByName('id'), 'true');
                 window.alert('add to sessionStorage')
             } else {
-                localStorage.removeItem('kek');
+                localStorage.removeItem('kek' + getParameterByName('id'));
             }
             window.alert('send')
             windowProxy.post({'checkEvent':

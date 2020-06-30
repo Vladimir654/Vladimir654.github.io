@@ -9,7 +9,7 @@
 <script type="text/javascript" src='porthole.min.js'></script>
 <input id="kurmokaev" type="checkbox">
 <script>
-
+    let productId = '123';
     var windowProxy;
     window.onload=function(){
         // Create a proxy window to send to and receive
@@ -19,7 +19,7 @@
 
         // Register an event handler to receive messages;
         windowProxy.addEventListener(function(event) {
-            if(typeof event.data.actisfdson === "undefined")
+            if(typeof event.data.checkEvent === "undefined")
                 document.getElementById('kurmokaev').checked = localStorage.getItem('kek') !== null ? true : false;
         });
         $('#kurmokaev').on('click' , () => {
@@ -30,7 +30,9 @@
             } else {
                 localStorage.removeItem('kek');
             }
-            windowProxy.post({'actisfdson': 'supefsfdfrsizeme'});
+            windowProxy.post({'checkEvent':
+                    localStorage.getItem('kek') !== null ? `{"${productId}":"true"}`:""
+            });
             window.alert('send')
         })
     };

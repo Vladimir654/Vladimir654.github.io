@@ -27,6 +27,7 @@
         });
         $('#kurmokaev').on('click' , () => {
             if(document.getElementById('kurmokaev').checked == true) {
+                window.alert(getParameterByName('id'));
                 localStorage.setItem('kek' + getParameterByName('id'), 'true');
                 window.alert('add to sessionStorage')
             } else {

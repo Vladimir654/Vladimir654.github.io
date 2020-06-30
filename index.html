@@ -20,7 +20,9 @@
         // Register an event handler to receive messages;
         windowProxy.addEventListener(function(event) {
             if(typeof event.data.checkEvent === "undefined") {
-                document.getElementById('kurmokaev').checked = localStorage.getItem('kek') !== null ? true : false;
+                if(getParameterByName('id') === '1') {
+                    document.getElementById('kurmokaev').checked = localStorage.getItem('kek') !== null ? true : false;
+                }
             }
         });
         $('#kurmokaev').on('click' , () => {
@@ -36,6 +38,15 @@
             });
         })
     };
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
 </script>
 
 </body>

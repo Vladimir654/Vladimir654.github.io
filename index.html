@@ -23,14 +23,15 @@
                 document.getElementById('kurmokaev').checked = localStorage.getItem('kek') !== null ? true : false;
         });
         $('#kurmokaev').on('click' , () => {
-            windowProxy.post({'actisfdson': 'supefsfdfrsizeme'});
-            window.alert('send')
+
             if(document.getElementById('kurmokaev').checked == true) {
                 localStorage.setItem('kek', 'true');
                 window.alert('add to sessionStorage')
             } else {
                 localStorage.setItem('kek', 'false');
             }
+            windowProxy.post({'actisfdson': 'supefsfdfrsizeme'});
+            window.alert('send')
         })
     };
 </script>

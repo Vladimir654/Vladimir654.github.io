@@ -22,9 +22,6 @@
             if(typeof event.data.checkEvent === "undefined")
                 document.getElementById('kurmokaev').checked = localStorage.getItem('kek') !== null ? true : false;
         });
-        windowProxy.post({'checkEvent':
-                localStorage.getItem('kek') !== null ? `{"${productId}":"true"}`:""
-        });
         $('#kurmokaev').on('click' , () => {
 
             if(document.getElementById('kurmokaev').checked == true) {
@@ -38,6 +35,9 @@
             });
             window.alert('send')
         })
+        windowProxy.post({'checkEvent':
+                localStorage.getItem('kek') !== null ? `{"${productId}":"true"}`:""
+        });
     };
 </script>
 
